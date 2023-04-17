@@ -51,13 +51,13 @@ describe('Register Service', () => {
       password: 'password123',
     });
 
-    expect(async () => {
-      await registerService.execute({
+    await expect(() => 
+      registerService.execute({
         name: 'John Doe',
         email: email,
         password: 'password123',
-      });
-    }).rejects.toBeInstanceOf(UserAlreadyExistsError);
+      }),
+    ).rejects.toBeInstanceOf(UserAlreadyExistsError);
 
   });
 });
